@@ -5,7 +5,7 @@ require 'kvpair/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "kvpair"
-  gem.version       = KVPair::VERSION
+  gem.version       = KellyLSB::KVPair::VERSION
   gem.authors       = ["Kelly Becker"]
   gem.email         = ["kellylsbkr@gmail.com"]
   gem.description   = "Rails easy Key Value Pairs."

@@ -8,9 +8,54 @@ You can install KVPair with [RubyGems](https://rubygems.org/gems/kvpair).
 
 `gem install kvpair` or `gem 'kvpair'`
 
+Add the following code to a migration (will add generator later)
+
+```ruby
+# Key value pair table
+create_table :kvpairs do |t|
+    t.string :owner
+    t.string :namespace
+    t.string :key
+    t.string :value
+end
+
+# Indexes
+add_index :kvpairs, :key
+add_index :kvpairs, :owner
+add_index :kvpairs, :namespace
+```
+
+Add the following to `app/models/kvpair.rb`
+
+```ruby
+class Kvpair < ActiveRecord::Base
+end
+```
+
 ## Documentation for KVPair
 
-Not available yet
+Add to any model by like this
+
+```ruby
+class User < ActiveRecord::Base
+    kvpair :social_networks
+end
+```
+
+And use like this
+
+```ruby
+# Retrieve
+user = User.find(1)
+user.social_networks[:twitter]
+# => 'KellyLSB'
+
+# Save
+user.social_networks = {
+    :twitter => 'KellyLSB',
+    :github => 'KellyLSB'
+}
+```
 
 ## Contributing to KVPair
  

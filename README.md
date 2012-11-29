@@ -14,9 +14,9 @@ Add the following code to a migration (will add generator later)
 # Key value pair table
 create_table :kvpairs do |t|
     t.string :owner
-  		t.string :namespace
-  		t.string :key
-  		t.string :value
+    t.string :namespace
+    t.string :key
+    t.string :value
 end
 
 # Indexes
@@ -48,7 +48,7 @@ And use like this
 # Retrieve
 user = User.find(1)
 user.social_networks[:twitter]
-=> 'KellyLSB'
+# => 'KellyLSB'
 
 # Save
 user.social_networks = {

@@ -129,6 +129,20 @@ module KVPair
 					return self.send(ns)
 				end
 			})
+			send(:extend, Module.new {
+				send(:define_method, ns.to_sym) do |input|
+					query = self
+
+					tmp = 0
+					input.each do |key, val|
+						query = query.joins("INNER JOIN `kvpairs` as `kvpairs#{tmp.to_s}` ON `kvpairs#{tmp.to_s}`.`owner` = CONCAT('#{self.name}:', `#{self.table_name}`.`id`)")
+						query = query.where("`kvpairs#{tmp.to_s}`.`namespace` = ? && `kvpairs#{tmp.to_s}`.`key` = ? && `kvpairs#{tmp.to_s}`.`value` = ?", ns, key, val.to_s)
+						tmp += 1
+					end
+
+					query
+				end
+			})
 		end
 	end
 end

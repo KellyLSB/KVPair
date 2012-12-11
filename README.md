@@ -1,6 +1,6 @@
 # KVPair
 
-KVPair is a Key Value Pair engine for Rails 3
+KVPair is a Key Value Pair engine for Rails 3.1 if your using 3.2+ ActiveRecord has it's own Key Value Store solution as described in the release notes [here](http://guides.rubyonrails.org/3_2_release_notes.html#active-record)
 
 ## Installing KVPair
 

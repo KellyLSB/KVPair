@@ -69,6 +69,9 @@ module KVPair
 								)
 							end
 						end
+
+						# Touch the updated_at stamp
+						self.touch
 					end
 
 					# Remove unwanted keys

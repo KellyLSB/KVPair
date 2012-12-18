@@ -76,7 +76,7 @@ module KVPair
 
 					# Touch the updated_at stamp
 					self.touch
-					self.save!
+					self.save(:validate => false)
 
 					# Return the new pair
 					return self.send(ns)

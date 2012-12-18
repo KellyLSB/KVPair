@@ -69,13 +69,14 @@ module KVPair
 								)
 							end
 						end
-
-						# Touch the updated_at stamp
-						self.touch
 					end
 
 					# Remove unwanted keys
 					Kvpair.delete_all(["`owner` = ? && `namespace` = ? && (`key` NOT IN (?) || `value` = '' || `value` IS NULL)", "#{self.class.name}:#{self.id}", ns, keys])
+
+					# Touch the updated_at stamp
+					self.touch
+					self.save!
 
 					# Return the new pair
 					return self.send(ns)
